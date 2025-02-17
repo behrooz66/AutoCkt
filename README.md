@@ -14,7 +14,19 @@ To activate the environment run:
 ```
 source activate autockt
 ```
+
+Upgrade pip:
+```
+pip install --upgrade pip
+```
+
+and install lz4:
+```
+pip install lz4
+```
+
 You might need to install some packages further using pip if necessary. To ensure the right versions, look at the environment.yml file.
+
 
 NGspice 2.7 needs to be installed separately, via this [installation link](https://sourceforge.net/projects/ngspice/files/ng-spice-rework/old-releases/27/). Page 607 of the pdf manual on the website has instructions on how to install. Note that you might need to remove some of the flags to get it to install correctly for your machine. 
 
@@ -61,7 +73,7 @@ To replicate the results from the paper, num_specs 350 was used (only 50 were se
 The rollout script takes the trained agent and gives it new specs that the agent has never seen before. To generate new design specs, run the gen_specs.py file again with your desired number of specs to validate on. To run validation, open ipython:
 
 ```
-run autockt/rollout.py /path/to/ray/checkpoint --run PPO --env opamp-v0 --num_val_specs ### --traj_len ## --no-render
+!python ./autockt/rollout.py /path/to/ray/checkpoint --run PPO --env opamp-v0 --num_val_specs ### --traj_len ## --no-render
 ``` 
 * num_val_specs: the number of untrained objectives to test on
 * traj_len: the length of each trajectory
